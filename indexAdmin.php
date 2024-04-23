@@ -28,6 +28,7 @@
                 <th>Tipo</th>
                 <th>Número</th>
                 <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -38,6 +39,10 @@
                 <td data-label="Tipo">Planta / Veneno</td>
                 <td data-label="Número">001</td>
                 <td data-label="Nombre">Bulbasaur</td>
+                <td data-label="Acciones" class="action-buttons">
+                    <button>Modificar</button>
+                    <button>Eliminar</button>
+                </td>
             </tr>
             </tbody>
         </table>
