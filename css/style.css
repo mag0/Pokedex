@@ -46,6 +46,25 @@ form{
     background-color: #f5d440;
 }
 
+.div-boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nuevoPokemon{
+    width: 30%;
+    background-color: #F8D027;
+    border: 2px solid goldenrod;
+    border-radius: 1em;
+    cursor: pointer;
+    padding: .4em;
+    color: white;
+}
+
+.nuevoPokemon:hover{
+    background-color: #f5d440;
+}
 
 /*TABLA*/
 

@@ -41,7 +41,11 @@
             </tr>
             </tbody>
         </table>
+
     </section>
+
+    <div class="div-boton"><button class="nuevoPokemon">Nuevo Pokémon</button></div>
+
 </main>
 </body>
 
