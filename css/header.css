@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor__form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #807e7e;
+}
+
+.logo {
+    display: flex;
+    width: 5em;
+    height: 5em;
+
+}
+
+.logo__titulo{
+    display: flex;
+    width: 5em;
+    height: 5em;
+
+}
+.form {
+    display: flex;
+    align-items: center;
+}
+
+.form__input {
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid blue;
+
+}
+
+.form__input-button {
+    padding: 5px 10px;
+    background-color: #fced00;
+    cursor: pointer;
+
+}
