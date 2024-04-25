@@ -6,11 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="/Pokedex/css/style.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
 <body>
 <main>
+
+    <header class="contenedor__form">
+        <div class="logo">
+            <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
+            <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
+        </div>
+        <a style="color: black" href="#">
+            <img src="imagenes/logo/user.png" alt="">
+            <?php
+                $nombre = $_GET['nombre'];
+                echo '<h2>'.$nombre.'</h2>'
+            ?>
+        </a>
+    </header>
 
     <section class="buscador">
         <form action="">
@@ -48,6 +63,9 @@
         </table>
     </section>
 </main>
+<?php
+require_once ('./footer.php');
+?>
 </body>
 
 </html>

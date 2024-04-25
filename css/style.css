@@ -11,7 +11,7 @@
 /*BUSCADOR*/
 
 .buscador{
-    margin: 1em 0;
+    margin: 2em 0rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,6 +112,8 @@ img {
 .action-buttons button:hover{
     background-color: #f5d440;
 }
+
+
 
 @media screen and (max-width: 1200px) {
     form, table{
