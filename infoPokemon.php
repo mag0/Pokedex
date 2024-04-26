@@ -54,12 +54,29 @@
             </thead>
             <tbody>
             <?php
-                require_once ('./pokemones.php');
+            $nombre = isset($_GET['nombre']);
+                echo '<tr>
+                <td data-label="Imagen"><a href="/Podekex/infoPokemon?nombre='.$nombre.'"><img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$nombre.'.png"
+                        alt="Bulbasaur"></a></td>
+                <td data-label="Imagen"><img
+                            src="/Pokedex/imagenes/TipoPokemon/tipo_'. $nombre.'_icono.png"
+                            alt="Bulbasaur"><img
+                            src="/Pokedex/imagenes/TipoPokemon/tipo_'. $nombre.'.png"
+                            alt="Bulbasaur"></td>
+                <td data-label="Número">'.$nombre.'</td>
+                <td data-label="Nombre">'.$nombre.'</td>
+            </tr>'
+
+
             ?>
+
             </tbody>
         </table>
 
     </section>
+
+    <div class="div-boton"><button class="nuevoPokemon">Nuevo Pokémon</button></div>
 
 </main>
 

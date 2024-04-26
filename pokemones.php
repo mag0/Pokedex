@@ -14,16 +14,17 @@ if (!$conn) {
 }
 
 // Realizar consulta
-$sql = "SELECT * FROM pokemon";
+    $sql = "SELECT * FROM pokemon";
+
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // Imprimir los datos de cada Pokémon
     while($row = mysqli_fetch_assoc($result)) {
         echo '<tr>
-                <td data-label="Imagen"><img
+                <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'"><img
                         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["id"].'.png"
-                        alt="Bulbasaur"></td>
+                        alt="Bulbasaur"></a></td>
                 <td data-label="Imagen"><img
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'_icono.png"
                             alt="Bulbasaur"><img
@@ -34,7 +35,7 @@ if (mysqli_num_rows($result) > 0) {
             </tr>';
     }
 } else {
-    echo "No se encontraron Pokémon.";
+    echo 'no hay pokemones';
 }
 
 // Cerrar la conexión

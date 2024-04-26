@@ -7,31 +7,31 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="/Pokedex/css/style.css">
+    <link rel="stylesheet" href="/Pokedex/css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="./css/footer.css">
 </head>
 
 <body>
 <main>
 
     <?php
-        require_once ('./header.php');
-        if ( isset($_GET['error'])){
-            switch ($_GET["error"]){
-                case 1:
-                    echo "<div style='background-color: aquamarine;color:red' >Usuario y contraseña invalidos </div> ";
-                    break;
-                case 2:
-                    echo "<div style='background-color: aquamarine;color:red' >Debe completar los datos </div> ";
-                    break;
-                case 3:
-                    echo "<div style='background-color: aquamarine;color:red' >LTA </div> ";
-                    break;
-                case 4:
-                    echo "<div style='background-color: aquamarine;color:red' >No se encontro el pokemon </div> ";
-                    break;
-            }
+    require_once ('./header.php');
+    if ( isset($_GET['error'])){
+        switch ($_GET["error"]){
+            case 1:
+                echo "<div style='background-color: aquamarine;color:red' >Usuario y contraseña invalidos </div> ";
+                break;
+            case 2:
+                echo "<div style='background-color: aquamarine;color:red' >Debe completar los datos </div> ";
+                break;
+            case 3:
+                echo "<div style='background-color: aquamarine;color:red' >LTA </div> ";
+                break;
+            case 4:
+                echo "<div style='background-color: aquamarine;color:red' >No se encontro el pokemon </div> ";
+                break;
         }
+    }
 
     ?>
 
@@ -54,12 +54,14 @@
             </thead>
             <tbody>
             <?php
-                require_once ('./pokemones.php');
+            require_once ('./buscador.php');
             ?>
             </tbody>
         </table>
 
     </section>
+
+    <div class="div-boton"><button class="nuevoPokemon">Nuevo Pokémon</button></div>
 
 </main>
 

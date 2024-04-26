@@ -7,6 +7,7 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="/Pokedex/css/style.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
@@ -62,6 +63,7 @@
             </tbody>
         </table>
     </section>
+    <div class="div-boton"><button class="nuevoPokemon">Nuevo Pokémon</button></div>
 </main>
 <?php
 require_once ('./footer.php');

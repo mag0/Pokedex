@@ -71,6 +71,8 @@ form{
 .tabla{
     display: flex;
     justify-content: center;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 table {
