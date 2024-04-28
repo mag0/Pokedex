@@ -16,23 +16,6 @@
 
     <?php
         require_once ('./header.php');
-        if ( isset($_GET['error'])){
-            switch ($_GET["error"]){
-                case 1:
-                    echo "<div style='background-color: aquamarine;color:red' >Usuario y contraseña invalidos </div> ";
-                    break;
-                case 2:
-                    echo "<div style='background-color: aquamarine;color:red' >Debe completar los datos </div> ";
-                    break;
-                case 3:
-                    echo "<div style='background-color: aquamarine;color:red' >LTA </div> ";
-                    break;
-                case 4:
-                    echo "<div style='background-color: aquamarine;color:red' >No se encontro el pokemon </div> ";
-                    break;
-            }
-        }
-
     ?>
 
     <section class="buscador">
@@ -41,6 +24,25 @@
             <input class="quienes" type="submit" value="Quien es este pokemon?">
         </form>
     </section>
+
+    <?php
+    if ( isset($_GET['error'])){
+        switch ($_GET["error"]){
+            case 1:
+                echo "<div style='background-color: aquamarine;color:red' >Usuario y contraseña invalidos </div> ";
+                break;
+            case 2:
+                echo "<div style='background-color: aquamarine;color:red' >Debe completar los datos </div> ";
+                break;
+            case 3:
+                echo "<div style='background-color: aquamarine;color:red' >LTA </div> ";
+                break;
+            case 4:
+                echo "<div style='background-color: aquamarine;color:red' >No se encontro el pokemon </div> ";
+                break;
+        }
+    }
+    ?>
 
     <section class="tabla">
         <table>

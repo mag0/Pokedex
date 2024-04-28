@@ -23,18 +23,36 @@
             <img src="imagenes/logo/user.png" alt="">
             <?php
                 $nombre = $_GET['nombre'];
-                echo '<h2>'.$nombre.'</h2>'
+                echo '<h2>'.$nombre.'</h2>';
             ?>
         </a>
     </header>
 
     <section class="buscador">
-        <form action="">
-            <input type="text" class="pokemon" name="pokemon"
-                   placeholder="Ingrese el nombre, tipo o número de pokémon">
-            <input class="quienes" type="submit" value="Quien es este pokemon?">
-        </form>
+            <form action="pokemonBuscado.php?admin=admin" method="POST">
+                <input type="text" class="pokemon" name="pokemonesBusqueda" placeholder="Ingrese el nombre, tipo o número de pokémon">
+                <input class="quienes" type="submit" value="Quien es este pokemon?">
+            </form>
     </section>
+
+    <?php
+    if ( isset($_GET['error'])){
+        switch ($_GET["error"]){
+            case 1:
+                echo "<div style='background-color: aquamarine;color:red' >Usuario y contraseña invalidos </div> ";
+                break;
+            case 2:
+                echo "<div style='background-color: aquamarine;color:red' >Debe completar los datos </div> ";
+                break;
+            case 3:
+                echo "<div style='background-color: aquamarine;color:red' >LTA </div> ";
+                break;
+            case 4:
+                echo "<div style='background-color: aquamarine;color:red' >No se encontro el pokemon </div> ";
+                break;
+        }
+    }
+    ?>
 
     <section class="tabla">
         <table>
@@ -48,22 +66,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td data-label="Imagen"><img
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-                        alt="Bulbasaur"></td>
-                <td data-label="Tipo">Planta / Veneno</td>
-                <td data-label="Número">001</td>
-                <td data-label="Nombre">Bulbasaur</td>
-                <td data-label="Acciones" class="action-buttons">
-                    <button>Modificar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
+            <?php
+            require_once ('./pokemonesAdmin.php');
+            ?>
             </tbody>
         </table>
     </section>
-    <div class="div-boton"><button class="nuevoPokemon">Nuevo Pokémon</button></div>
+    <div class="div-boton"><button class="nuevoPokemon"><a style="text-decoration: none; color: white" href="/Pokedex/formulario.php">Nuevo Pokémon</a></button></div>
 </main>
 <?php
 require_once ('./footer.php');

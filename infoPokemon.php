@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
 $row = $result->fetch_assoc();
 
 echo '<td>
-    <img class="contenedor__porkemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["id"].'.png"></td>';
+    <img class="contenedor__porkemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["numero"].'.png"></td>';
     echo '<div class="type-container">';
 echo '<td>
         <img class="tipo__pokemon" src="/Pokedex/imagenes/TipoPokemon/tipo_'.$row["tipo"].'_icono.png">

@@ -36,7 +36,7 @@
     ?>
 
     <section class="buscador">
-        <form action="pokemonBuscado.php" method="POST">
+        <form action="pokemonBuscado.php?admin=admin" method="POST">
             <input type="text" class="pokemon" name="pokemonesBusqueda" placeholder="Ingrese el nombre, tipo o número de pokémon">
             <input class="quienes" type="submit" value="Quien es este pokemon?">
         </form>
@@ -50,11 +50,16 @@
                 <th>Tipo</th>
                 <th>Número</th>
                 <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
             <?php
-            require_once ('./buscador.php');
+            if(isset($_GET['admin'])){
+                require_once ('./buscadorAdmin.php');
+            }else{
+                require_once ('./buscador.php');
+            }
             ?>
             </tbody>
         </table>

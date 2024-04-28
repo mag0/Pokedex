@@ -37,14 +37,18 @@ if(isset($_POST['pokemonesBusqueda'])) {
                             alt="Bulbasaur"></td>
                 <td data-label="Número">' . $row["numero"] . '</td>
                 <td data-label="Nombre">' . $row["imagen"] . '</td>
+                <td data-label="Acciones" class="action-buttons">
+                    <a href="/Pokedex/formulario.php?id='.$row["id"].'nombre='.$row["imagen"].'tipo='.$row["tipo"].'numero='.$row["numero"].'"><button>Modificar</button></a>
+                    <a href="/Pokedex/eliminarPokemon.php?id='.$row["id"].'"><button>Eliminar</button></a>
+                </td>
             </tr>';
         }
     } else {
-        header('location:/Pokedex/index.php?error=4');
+        header('location:/Pokedex/indexAdmin.php?error=4&nombre=Admin');
         exit();
     }
 }else{
-    header('location:/Pokedex/index.php?error=4');
+    header('location:/Pokedex/indexAdmin.php?error=4&nombre=Admin');
     exit();
 }
 $conn->close();
