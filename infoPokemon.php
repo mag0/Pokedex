@@ -1,88 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="/Pokedex/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="./css/headerDetalles.css">
     <link rel="stylesheet" href="./css/footer.css">
 </head>
-
 <body>
-<main>
-
-    <?php
-        require_once ('./header.php');
-        if ( isset($_GET['error'])){
-            switch ($_GET["error"]){
-                case 1:
-                    echo "<div style='background-color: aquamarine;color:red' >Usuario y contraseña invalidos </div> ";
-                    break;
-                case 2:
-                    echo "<div style='background-color: aquamarine;color:red' >Debe completar los datos </div> ";
-                    break;
-                case 3:
-                    echo "<div style='background-color: aquamarine;color:red' >LTA </div> ";
-                    break;
-                case 4:
-                    echo "<div style='background-color: aquamarine;color:red' >No se encontro el pokemon </div> ";
-                    break;
-            }
-        }
-
-    ?>
-
-    <section class="buscador">
-        <form action="pokemonBuscado.php" method="POST">
-            <input type="text" class="pokemon" name="pokemonesBusqueda" placeholder="Ingrese el nombre, tipo o número de pokémon">
-            <input class="quienes" type="submit" value="Quien es este pokemon?">
-        </form>
-    </section>
-
-    <section class="tabla">
-        <table>
-            <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Tipo</th>
-                <th>Número</th>
-                <th>Nombre</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            $nombre = isset($_GET['nombre']);
-                echo '<tr>
-                <td data-label="Imagen"><a href="/Podekex/infoPokemon?nombre='.$nombre.'"><img
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$nombre.'.png"
-                        alt="Bulbasaur"></a></td>
-                <td data-label="Imagen"><img
-                            src="/Pokedex/imagenes/TipoPokemon/tipo_'. $nombre.'_icono.png"
-                            alt="Bulbasaur"><img
-                            src="/Pokedex/imagenes/TipoPokemon/tipo_'. $nombre.'.png"
-                            alt="Bulbasaur"></td>
-                <td data-label="Número">'.$nombre.'</td>
-                <td data-label="Nombre">'.$nombre.'</td>
-            </tr>'
-
-
-            ?>
-
-            </tbody>
-        </table>
-
-    </section>
-
-    <div class="div-boton"><button class="nuevoPokemon">Nuevo Pokémon</button></div>
-
-</main>
 
 <?php
+require_once ('./header.php');
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "pokemones";
+
+
+if (isset($_GET['nombre'])) {
+    // Obtener el nombre del Pokémon de la URL
+    $nombre = $_GET['nombre'];
+
+
+    $conn = mysqli_connect($servername, $username, $password, $database);
+
+
+    if (!$conn) {
+        die("Error al conectar con la base de datos: " . mysqli_connect_error());
+    }
+
+
+    $stmt = $conn->prepare("SELECT id, imagen, tipo, descripcion, numero FROM pokemon WHERE imagen = ?");
+$stmt->bind_param("s", $nombre);
+$stmt->execute();
+$result = $stmt->get_result();
+
+
+if ($result->num_rows > 0) {
+
+$row = $result->fetch_assoc();
+
+echo '<td>
+    <img class="contenedor__porkemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["id"].'.png"></td>';
+    echo '<div class="type-container">';
+echo '<td>
+        <img class="tipo__pokemon" src="/Pokedex/imagenes/TipoPokemon/tipo_'.$row["tipo"].'_icono.png">
+      </td>';
+        echo '<td><p class="nombre__pokemon">'.$nombre.'</p></td>';
+        echo '<p class="descrip__pokemon">'.$row["descripcion"].'</p>';
+
+} else {
+// Si no se encuentra el Pokémon en la base de datos, mostrar un mensaje de error
+echo '<p>Error: No se encontró información para el Pokémon '.$nombre.'.</p>';
+}
+
+// Cerrar la conexión
+$conn->close();
+} else {
+// Si no se proporciona el nombre del Pokémon en la URL, mostrar un mensaje de error
+echo '<p>Error: No se proporcionó el nombre del Pokémon.</p>';
+}
+
 require_once ('./footer.php');
 ?>
-</body>
 
+</body>
 </html>

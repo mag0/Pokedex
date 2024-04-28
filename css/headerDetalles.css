@@ -1,0 +1,66 @@
+.contenedor__form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    background-color: #F8D027;
+    margin-bottom:4rem;
+}
+
+.logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form{
+    display: none;
+}
+
+.form__input {
+    display: none;
+
+}
+
+.form__input-button {
+    display: none;
+}
+
+.pokedex-title {
+    font-size: 3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.contenedor__porkemon {
+    display: flex;
+    margin-left: 60px;
+    border: 5px solid black;
+
+}
+
+.tipo__pokemon {
+    display: flex;
+    margin-left: 40em;
+    position: absolute;
+    bottom: 30em;
+}
+
+.nombre__pokemon{
+    display: flex;
+    margin-left: 36em;
+    position: absolute;
+    bottom: 18em;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.descrip__pokemon{
+    display: flex;
+    margin-left: 20em;
+    position: absolute;
+    bottom: 10em;
+    text-align: initial;
+    font-size: 2em;
+}
