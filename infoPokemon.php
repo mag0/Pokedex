@@ -10,7 +10,21 @@
 <body>
 
 <?php
-require_once ('./header.php');
+if(isset($_GET['admin'])){
+    $nombre = $_GET['admin'];
+    echo '<header class="contenedor__form">
+        <div class="logo">
+            <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
+            <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
+        </div>
+        <a style="color: black" href="#">
+            <img src="imagenes/logo/user.png" alt="">
+            <h2>'.$nombre.'</h2>
+        </a>
+    </header>';
+}else{
+    require_once ('./header.php');
+}
 
 $servername = "localhost";
 $username = "root";

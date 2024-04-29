@@ -10,7 +10,7 @@ if ( isset($_POST["usuario"]) &&  isset($_POST["pass"]) ){
     if($esValido){
         $_SESSION["usuario"] = $usuario;
 
-        header("location:indexAdmin.php?nombre=Admin");
+        header("location:index.php?nombre=Admin");
         exit();
     } else {
         header("location:index.php?error=1");

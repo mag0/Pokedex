@@ -32,7 +32,7 @@ if (mysqli_num_rows($resultado_verificar) > 0) {
 
     if (mysqli_query($conn, $sql_insertar)) {
         echo "Pokémon creado exitosamente.";
-        header('Location: /Pokedex/indexAdmin.php?nombre=Admin');
+        header('Location: /Pokedex/index.php?nombre=Admin');
         exit();
     } else {
         echo "Error al crear el Pokémon: " . mysqli_error($conn);

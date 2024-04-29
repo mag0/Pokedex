@@ -15,7 +15,37 @@
 <main>
 
     <?php
-    require_once ('./header.php');
+    if(isset($_GET['nombre'])){
+        $nombre = $_GET['nombre'];
+        echo '<header class="contenedor__form">
+        <div class="logo">
+            <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
+            <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
+        </div>
+        <a style="color: black" href="#">
+            <img src="imagenes/logo/user.png" alt="">
+            <h2>'.$nombre.'</h2>
+        </a>
+    </header>';
+    }else{
+        require_once ('./header.php');
+    }
+    ?>
+
+    <section class="buscador">
+        <?php
+        if(isset($_GET['nombre'])){
+            echo '<form action="pokemonBuscado.php?nombre=Admin" method="POST">';
+        }else{
+            echo '<form action="pokemonBuscado.php" method="POST">';
+        }
+        ?>
+        <input type="text" class="pokemon" name="pokemonesBusqueda" placeholder="Ingrese el nombre, tipo o número de pokémon">
+        <input class="quienes" type="submit" value="Quien es este pokemon?">
+        </form>
+    </section>
+
+    <?php
     if ( isset($_GET['error'])){
         switch ($_GET["error"]){
             case 1:
@@ -35,13 +65,6 @@
 
     ?>
 
-    <section class="buscador">
-        <form action="pokemonBuscado.php?admin=admin" method="POST">
-            <input type="text" class="pokemon" name="pokemonesBusqueda" placeholder="Ingrese el nombre, tipo o número de pokémon">
-            <input class="quienes" type="submit" value="Quien es este pokemon?">
-        </form>
-    </section>
-
     <section class="tabla">
         <table>
             <thead>
@@ -50,24 +73,31 @@
                 <th>Tipo</th>
                 <th>Número</th>
                 <th>Nombre</th>
-                <th>Acciones</th>
+                <?php
+                if(isset($_GET['nombre'])){
+                    echo '<th>Acciones</th>';
+                }
+                ?>
             </tr>
             </thead>
             <tbody>
             <?php
-            if(isset($_GET['admin'])){
-                require_once ('./buscadorAdmin.php');
-            }else{
-                require_once ('./buscador.php');
-            }
+                require_once ('./buscador.php')
             ?>
             </tbody>
         </table>
 
     </section>
 
-    <div class="div-boton"><button class="nuevoPokemon">Nuevo Pokémon</button></div>
-
+    <?php
+    if(isset($_GET['nombre'])){
+        echo '<div class="div-boton">
+            <button class="nuevoPokemon">
+                <a style="text-decoration: none; color: white" href="/Pokedex/formulario.php">Nuevo Pokémon</a>
+            </button>
+            </div>';
+    }
+    ?>
 </main>
 
 <?php

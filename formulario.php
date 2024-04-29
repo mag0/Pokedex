@@ -13,7 +13,17 @@
 
 <body>
 <?php
-require_once ('./header.php');
+        $nombre = $_GET['nombre'];
+        echo '<header class="contenedor__form">
+        <div class="logo">
+            <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
+            <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
+        </div>
+        <a style="color: black" href="#">
+            <img src="imagenes/logo/user.png" alt="">
+            <h2>'.$nombre.'</h2>
+        </a>
+    </header>';
 if(isset($_GET['id'])){
     $nombre = $_GET['nombre'];
     $tipo = $_GET['tipo'];
@@ -21,7 +31,7 @@ if(isset($_GET['id'])){
     echo '<main>
     <section class="formulario">
         <h2>Nuevo Pokémon</h2>
-        <form action="modificarPokemon.php" method="POST" enctype="multipart/form-data">
+        <form action="agregarPokemon.php" method="POST" enctype="multipart/form-data">
             <div class="input-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="'.$nombre.'">
@@ -70,16 +80,11 @@ if(isset($_GET['id'])){
 }
 
 if (isset($_GET['error'])) {
-    switch ($_GET["error"]) {
-        case 5:
+    if ($_GET["error"]==5) {
             echo "<div style='background-color: aquamarine;color:red' >Ya existe un pokemon con ese nombre </div> ";
-            break;
-
     }
 }
 ?>
-
-
 
 <?php
 require_once ('./footer.php');

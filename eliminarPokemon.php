@@ -26,7 +26,7 @@ if (!$conn) {
 
 // Cerrar la conexión
 $conn->close();
-    header('location:/Pokedex/indexAdmin.php?nombre=Admin');
+    header('location:/Pokedex/index.php?nombre=Admin');
     exit();
 }else {
     echo "Error: No se proporcionó el ID del Pokémon a eliminar.";

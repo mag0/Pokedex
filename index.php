@@ -15,11 +15,31 @@
 <main>
 
     <?php
+    if(isset($_GET['nombre'])){
+        $nombre = $_GET['nombre'];
+        echo '<header class="contenedor__form">
+        <div class="logo">
+            <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
+            <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
+        </div>
+        <a style="color: black" href="#">
+            <img src="imagenes/logo/user.png" alt="">
+            <h2>'.$nombre.'</h2>
+        </a>
+    </header>';
+    }else{
         require_once ('./header.php');
+    }
     ?>
 
     <section class="buscador">
-        <form action="pokemonBuscado.php" method="POST">
+        <?php
+        if(isset($_GET['nombre'])){
+            echo '<form action="pokemonBuscado.php?nombre=Admin" method="POST">';
+        }else{
+            echo '<form action="pokemonBuscado.php" method="POST">';
+        }
+        ?>
             <input type="text" class="pokemon" name="pokemonesBusqueda" placeholder="Ingrese el nombre, tipo o número de pokémon">
             <input class="quienes" type="submit" value="Quien es este pokemon?">
         </form>
@@ -52,6 +72,11 @@
                 <th>Tipo</th>
                 <th>Número</th>
                 <th>Nombre</th>
+                <?php
+                if(isset($_GET['nombre'])){
+                    echo '<th>Acciones</th>';
+                }
+                ?>
             </tr>
             </thead>
             <tbody>
@@ -62,7 +87,16 @@
         </table>
 
     </section>
+    <?php
+    if(isset($_GET['nombre'])){
+    echo '<div class="div-boton">
+            <a class="nuevoPokemon" style="text-decoration: none; color: white; text-align: center" href="/Pokedex/formulario.php?nombre=Admin">
+                Nuevo Pokémon
+            </a>
+            </div>';
 
+    }
+    ?>
 </main>
 
 <?php
