@@ -45,14 +45,15 @@ INSERT INTO `login` (`id`, `usuario`, `pass`) VALUES
 --
 -- Estructura de tabla para la tabla `pokemon`
 --
-
 CREATE TABLE `pokemon` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `imagen` varchar(255) NOT NULL,
   `tipo` varchar(255) NOT NULL,
   `numero` varchar(20) NOT NULL,
-  `descripcion` text NOT NULL
+  `descripcion` text NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Volcado de datos para la tabla `pokemon`
