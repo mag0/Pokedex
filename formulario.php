@@ -25,27 +25,37 @@
         </a>
     </header>';
 if(isset($_GET['id'])){
+    $id = $_GET['id'];
     $nombre = $_GET['nombre'];
     $tipo = $_GET['tipo'];
     $numero = $_GET['numero'];
     echo '<main>
     <section class="formulario">
         <h2>Nuevo Pokémon</h2>
-        <form action="agregarPokemon.php" method="POST" enctype="multipart/form-data">
+        <form action="modificarPokemon.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id" value='.$id.'>
             <div class="input-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="'.$nombre.'">
+                <input type="text" id="nombre" name="nombre" value="'.$nombre.'">
+            </div>
+            <div class="input-group">
+                <label for="tipo">Imagen:</label>
+                <input type="file" id="imagen" name="imagen" accept=".txt">
             </div>
             <div class="input-group">
                 <label for="tipo">Tipo:</label>
-                <input type="file" id="tipo" name="tipo" accept=".txt">
+                <input type="text" id="tipo" value="'.$tipo.'" name="tipo" accept=".txt">
             </div>
             <div class="input-group">
                 <label for="numero">Número:</label>
-                <input type="text" id="numero" name="numero" placeholder="'.$numero.'">
+                <input type="text" id="numero" name="numero" value="'.$numero.'">
             </div>
             <div class="input-group">
-                <button type="submit">Agregar Pokémon</button>
+                <label for="descripcion">Descripcion:</label>
+                <input type="text" id="descripcion" name="descripcion" value="descripcion">
+            </div>
+            <div class="input-group">
+                <button type="submit">Modificar Pokemón</button>
             </div>
         </form>
     </section>

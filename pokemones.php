@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -17,6 +18,8 @@ if (!$conn) {
 
 $result = mysqli_query($conn, $sql);
 
+
+
 if (mysqli_num_rows($result) > 0) {
     // Imprimir los datos de cada Pokémon
     while($row = mysqli_fetch_assoc($result)) {
@@ -33,7 +36,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td data-label="Número">'.$row["numero"].'</td>
                 <td data-label="Nombre">'.$row["imagen"].'</td>
                 <td data-label="Acciones" class="action-buttons">
-                    <a href="/Pokedex/formulario.php?id='.$row["id"].'nombre='.$row["imagen"].'tipo='.$row["tipo"].'numero='.$row["numero"].'"><button>Modificar</button></a>
+                    <a href="/Pokedex/formulario.php?id='.$row["id"].'&nombre='.$row["imagen"].'&tipo='.$row["tipo"].'&numero='.$row["numero"].'&admin=admin."><button>Modificar</button></a>
                     <a href="/Pokedex/eliminarPokemon.php?id='.$row["id"].'"><button>Eliminar</button></a>
                 </td>
             </tr>';
