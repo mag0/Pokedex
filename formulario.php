@@ -29,18 +29,20 @@ if(isset($_GET['id'])){
     $nombre = $_GET['nombre'];
     $tipo = $_GET['tipo'];
     $numero = $_GET['numero'];
+    $descripcion = $_GET['descripcion'];
+    $total_pokemones = $_GET['pokemonesTotales'];
     echo '<main>
     <section class="formulario">
         <h2>Nuevo Pokémon</h2>
-        <form action="modificarPokemon.php" method="POST" enctype="multipart/form-data">
+        <form action="modificarPokemon.php?numero1='.$numero.'" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="id" value='.$id.'>
             <div class="input-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" value="'.$nombre.'">
             </div>
             <div class="input-group">
-                <label for="tipo">Imagen:</label>
-                <input type="file" id="imagen" name="imagen" accept=".txt">
+                <label for="tipo">Imagen (solo archivos PNG):</label>
+                <input type="file" id="imagen" name="imagen" accept="image/png">
             </div>
             <div class="input-group">
                 <label for="tipo">Tipo:</label>
@@ -48,11 +50,11 @@ if(isset($_GET['id'])){
             </div>
             <div class="input-group">
                 <label for="numero">Número:</label>
-                <input type="text" id="numero" name="numero" value="'.$numero.'">
+                <input type="text" id="numero" name="numero" value="'.$numero .' o mayor a '.$total_pokemones.'">
             </div>
             <div class="input-group">
                 <label for="descripcion">Descripcion:</label>
-                <input type="text" id="descripcion" name="descripcion" value="descripcion">
+                <input type="text" id="descripcion" name="descripcion" value="'.$descripcion.'">
             </div>
             <div class="input-group">
                 <button type="submit">Modificar Pokemón</button>
@@ -91,7 +93,7 @@ if(isset($_GET['id'])){
 
 if (isset($_GET['error'])) {
     if ($_GET["error"]==5) {
-            echo "<div style='background-color: aquamarine;color:red' >Ya existe un pokemon con ese nombre </div> ";
+            echo "<div style='background-color: aquamarine;color:red' >Ya existe un pokemon con ese nombre o numero</div> ";
     }
 }
 ?>

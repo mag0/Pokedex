@@ -1,5 +1,36 @@
 <?php
+function obtenerPokemonesTotales()
+{
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "pokemones";
 
+// Crear conexión
+    $conn = mysqli_connect($servername, $username, $password, $database);
+
+// Verificar la conexión
+    if (!$conn) {
+        die("Error al conectar con la base de datos: " . mysqli_connect_error());
+    }
+
+// Consulta para contar la cantidad de Pokémon en la base de datos
+    $sql = "SELECT COUNT(*) AS total_pokemones FROM pokemon";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        $total_pokemones = $row['total_pokemones'];
+    } else {
+        echo "Error al ejecutar la consulta: " . mysqli_error($conn);
+    }
+
+// Cerrar la conexión
+    mysqli_close($conn);
+
+    return $total_pokemones;
+}
+$total_pokemones = obtenerPokemonesTotales();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -18,7 +49,7 @@ if (!$conn) {
 
 $result = mysqli_query($conn, $sql);
 
-
+$cantidadPokemones= 0;
 
 if (mysqli_num_rows($result) > 0) {
     // Imprimir los datos de cada Pokémon
@@ -26,7 +57,7 @@ if (mysqli_num_rows($result) > 0) {
         if(isset($_GET['nombre'])){
             echo '<tr>
                 <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'&admin=admin"><img
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["numero"].'.png"
+                        src="/Pokedex/imagenes/pokemones/'.$row["numero"].'.png?'.time().'"
                         alt="Bulbasaur"></a></td>
                 <td data-label="Imagen"><img
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'_icono.png"
@@ -36,7 +67,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td data-label="Número">'.$row["numero"].'</td>
                 <td data-label="Nombre">'.$row["imagen"].'</td>
                 <td data-label="Acciones" class="action-buttons">
-                    <a href="/Pokedex/formulario.php?id='.$row["id"].'&nombre='.$row["imagen"].'&tipo='.$row["tipo"].'&numero='.$row["numero"].'&admin=admin."><button>Modificar</button></a>
+                    <a href="/Pokedex/formulario.php?id='.$row["id"].'&nombre='.$row["imagen"].'&tipo='.$row["tipo"].'&numero='.$row["numero"].'&descripcion='.$row["descripcion"].'&pokemonesTotales='.$total_pokemones.'&admin=admin."><button>Modificar</button></a>
                     <a href="/Pokedex/eliminarPokemon.php?id='.$row["id"].'"><button>Eliminar</button></a>
                 </td>
             </tr>';

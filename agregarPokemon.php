@@ -19,7 +19,7 @@ if (!$conn) {
 }
 
 // Verificar si el Pokémon ya existe
-$sql_verificar = "SELECT * FROM pokemon WHERE imagen = '$nombre'";
+$sql_verificar = "SELECT * FROM pokemon WHERE imagen = '$nombre' OR numero = '$numero'";
 $resultado_verificar = mysqli_query($conn, $sql_verificar);
 
 if (mysqli_num_rows($resultado_verificar) > 0) {

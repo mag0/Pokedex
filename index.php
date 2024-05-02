@@ -90,7 +90,7 @@
     <?php
     if(isset($_GET['nombre'])){
     echo '<div class="div-boton">
-            <a class="nuevoPokemon" style="text-decoration: none; color: white; text-align: center" href="/Pokedex/formulario.php?nombre=Admin">
+            <a class="nuevoPokemon" style="text-decoration: none; color: white; text-align: center" href="/Pokedex/formulario.php?nombre=Admin" >
                 Nuevo Pokémon
             </a>
             </div>';
