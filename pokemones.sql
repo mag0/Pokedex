@@ -39,6 +39,8 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`id`, `usuario`, `pass`) VALUES
 (1, 'admin', '12345');
+(2, 'Jose', 'poke');
+(1, 'Maria', 'pikachu12');
 
 -- --------------------------------------------------------
 

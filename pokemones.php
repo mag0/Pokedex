@@ -56,10 +56,10 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         if(isset($_GET['nombre'])){
             echo '<tr>
-                <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'&admin=admin"><img
+                <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'&admin=admin"><img class="img_p"
                         src="/Pokedex/imagenes/pokemones/'.$row["numero"].'.png?'.time().'"
                         alt="Bulbasaur"></a></td>
-                <td data-label="Imagen"><img
+                <td data-label="Imagen"><img class="img_p"
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'_icono.png"
                             alt="Bulbasaur"><img
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'.png"
@@ -73,10 +73,10 @@ if (mysqli_num_rows($result) > 0) {
             </tr>';
         }else{
             echo '<tr>
-                <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'"><img
+                <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'"><img class="img_p"
                         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["numero"].'.png"
                         alt="Bulbasaur"></a></td>
-                <td data-label="Imagen"><img
+                <td data-label="Imagen"><img class="img_p"
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'_icono.png"
                             alt="Bulbasaur"><img
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'.png"

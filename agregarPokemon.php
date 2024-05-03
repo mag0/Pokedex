@@ -27,7 +27,30 @@ if (mysqli_num_rows($resultado_verificar) > 0) {
     header('Location: /Pokedex/formulario.php?nombre=Admin&error=5');
     exit();
 } else {
-    // Realizar la inserción si el Pokémon no existe
+    // Manejar la carga del archivo de imagen solo si el Pokémon no existe
+    if(isset($_FILES['imagen'])){
+        $file_size = $_FILES['imagen']['size'];
+        $file_tmp = $_FILES['imagen']['tmp_name'];
+        $file_type = $_FILES['imagen']['type'];
+
+        $folder = "imagenes/pokemones/";
+        $file_extension = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
+        $file_name = $numero . '.' . $file_extension;
+
+        $file_path = $folder . $file_name;
+
+        if(move_uploaded_file($file_tmp, $file_path)){
+            echo "El archivo " . $file_name . " ha sido subido exitosamente";
+        } else {
+            echo "Error al subir el archivo.";
+            exit(); // Detener la ejecución del script si hay un error en la carga del archivo
+        }
+    } else {
+        echo "Por favor, seleccione un archivo";
+        exit(); // Detener la ejecución del script si no se proporciona ningún archivo
+    }
+
+    // Realizar la inserción del Pokémon en la base de datos
     $sql_insertar = "INSERT INTO pokemon (imagen, tipo, numero, descripcion) VALUES ('$nombre', '$tipo', '$numero', '$descripcion')";
 
     if (mysqli_query($conn, $sql_insertar)) {
@@ -43,4 +66,3 @@ if (mysqli_num_rows($resultado_verificar) > 0) {
 $conn->close();
 
 ?>
-

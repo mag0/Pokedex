@@ -10,21 +10,27 @@
 <body>
 
 <?php
-if(isset($_GET['admin'])){
-    $nombre = $_GET['admin'];
-    echo '<header class="contenedor__form">
+    if(isset($_GET['nombre'])){
+        $nombre = $_GET['nombre'];
+        echo '<header class="contenedor__form">
         <div class="logo">
             <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
             <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
         </div>
-        <a style="color: black" href="#">
+        <div style="color: black; text-align: center">
             <img src="imagenes/logo/user.png" alt="">
             <h2>'.$nombre.'</h2>
-        </a>
-    </header>';
-}else{
-    require_once ('./header.php');
-}
+            <a href="/Pokedex/index.php" style="border: 1px solid black; padding: .1em; text-decoration: none; color: black">Cerrar Sesión</a>
+        </div>';
+        if ( isset($_GET['error']) &&$_GET['error']==1){
+            echo "<div style='background-color: aquamarine;color:red; padding: .2em; text-align: center' >Usuario y contraseña invalidos </div> ";
+        }
+    echo '</header>';
+
+    }else{
+        require_once ('./header.php');
+    }
+
 
 $servername = "localhost";
 $username = "root";
@@ -56,7 +62,7 @@ if ($result->num_rows > 0) {
 $row = $result->fetch_assoc();
 
 echo '<td>
-    <img class="contenedor__porkemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["numero"].'.png"></td>';
+    <img class="contenedor__porkemon" src="/Pokedex/imagenes/pokemones/'.$row["numero"].'.png"></td>';
     echo '<div class="type-container">';
 echo '<td>
         <img class="tipo__pokemon" src="/Pokedex/imagenes/TipoPokemon/tipo_'.$row["tipo"].'_icono.png">

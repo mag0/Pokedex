@@ -22,14 +22,20 @@
             <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
             <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
         </div>
-        <a style="color: black" href="#">
+        <div style="color: black; text-align: center">
             <img src="imagenes/logo/user.png" alt="">
             <h2>'.$nombre.'</h2>
-        </a>
-    </header>';
+            <a href="/Pokedex/index.php" style="border: 1px solid black; padding: .1em; text-decoration: none; color: black">Cerrar Sesión</a>
+        </div>';
+        if ( isset($_GET['error']) &&$_GET['error']==1){
+            echo "<div style='background-color: aquamarine;color:red; padding: .2em; text-align: center' >Usuario y contraseña invalidos </div> ";
+        }
+    echo '</header>';
+
     }else{
         require_once ('./header.php');
     }
+
     ?>
 
     <section class="buscador">
@@ -48,9 +54,6 @@
     <?php
     if ( isset($_GET['error'])){
         switch ($_GET["error"]){
-            case 1:
-                echo "<div style='background-color: aquamarine;color:red' >Usuario y contraseña invalidos </div> ";
-                break;
             case 2:
                 echo "<div style='background-color: aquamarine;color:red' >Debe completar los datos </div> ";
                 break;

@@ -14,7 +14,7 @@
 <body>
 <?php
         $nombre = $_GET['nombre'];
-        echo '<header class="contenedor__form">
+        echo '<header class="contenedor__form" style="margin-bottom: 1em">
         <div class="logo">
             <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
             <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
@@ -24,6 +24,11 @@
             <h2>'.$nombre.'</h2>
         </a>
     </header>';
+if (isset($_GET['error'])) {
+    if ($_GET["error"]==5) {
+        echo "<div style='background-color: aquamarine;color:red; padding: .2em; text-align: center' >Ya existe un pokemon con ese nombre o numero</div> ";
+    }
+}
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $nombre = $_GET['nombre'];
@@ -42,7 +47,7 @@ if(isset($_GET['id'])){
             </div>
             <div class="input-group">
                 <label for="tipo">Imagen (solo archivos PNG):</label>
-                <input type="file" id="imagen" name="imagen" accept="image/png">
+                <input type="file" id="imagen" name="imagen" accept="image/png" required>
             </div>
             <div class="input-group">
                 <label for="tipo">Tipo:</label>
@@ -72,16 +77,20 @@ if(isset($_GET['id'])){
                 <input type="text" id="nombre" name="nombre" placeholder="Ejemplo: Pikachu" required>
             </div>
             <div class="input-group">
+                <label for="tipo">Imagen (solo archivos PNG):</label>
+                <input type="file" id="imagen" name="imagen" accept="image/png">
+            </div>
+            <div class="input-group">
                 <label for="tipo">Tipo:</label>
                 <input type="text" id="tipo" name="tipo" placeholder="Ejemplo: Planta" required>
             </div>
             <div class="input-group">
                 <label for="numero">Número:</label>
-                <input type="text" id="numero" name="numero" placeholder="Con el numero se cargara la imagen" required>
+                <input type="text" id="numero" name="numero" placeholder="160" required>
             </div>
             <div class="input-group">
                 <label for="descripcion">Descripcion:</label>
-                <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" required>
+                <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion corta del pokemon" required>
             </div>
             <div class="input-group">
                 <button type="submit">Agregar Pokémon</button>
@@ -91,11 +100,7 @@ if(isset($_GET['id'])){
 </main>';
 }
 
-if (isset($_GET['error'])) {
-    if ($_GET["error"]==5) {
-            echo "<div style='background-color: aquamarine;color:red' >Ya existe un pokemon con ese nombre o numero</div> ";
-    }
-}
+
 ?>
 
 <?php

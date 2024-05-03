@@ -121,6 +121,10 @@ img {
     form, table{
         font-size: 1.2em;
     }
+    .img_p{
+        width: 6em;
+        height: 6em;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -131,11 +135,11 @@ img {
 
 @media screen and (max-width: 600px) {
     form{
-        font-size: .8em;
+        font-size: .6em;
     }
     table {
         border: 0;
-        font-size: .8em;
+        font-size: .6em;
     }
     table thead {
         display: none;
@@ -166,5 +170,17 @@ img {
     }
     .action-buttons {
         margin-top: 10px;
+    }
+
+
+    .action-buttons button {
+        font-size: .8em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .img_p{
+        width: 5.5em;
+        height: 5.5em;
     }
 }
