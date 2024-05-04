@@ -55,7 +55,7 @@ if(isset($_GET['id'])){
             </div>
             <div class="input-group">
                 <label for="numero">Número:</label>
-                <input type="text" id="numero" name="numero" value="'.$numero .' o mayor a '.$total_pokemones.'">
+                <input type="text" id="numero" name="numero" placeholder="'.$numero .' o mayor a '.$total_pokemones.'">
             </div>
             <div class="input-group">
                 <label for="descripcion">Descripcion:</label>

@@ -10,10 +10,8 @@ $username = "root";
 $password = "";
 $database = "pokemones";
 
-// Crear conexión
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Verificar la conexión
 if (!$conn) {
     die("Error al conectar con la base de datos: " . mysqli_connect_error());
 }
@@ -27,7 +25,6 @@ if (mysqli_num_rows($resultado_verificar) > 0) {
     header('Location: /Pokedex/formulario.php?nombre=Admin&error=5');
     exit();
 } else {
-    // Manejar la carga del archivo de imagen solo si el Pokémon no existe
     if(isset($_FILES['imagen'])){
         $file_size = $_FILES['imagen']['size'];
         $file_tmp = $_FILES['imagen']['tmp_name'];
@@ -43,11 +40,11 @@ if (mysqli_num_rows($resultado_verificar) > 0) {
             echo "El archivo " . $file_name . " ha sido subido exitosamente";
         } else {
             echo "Error al subir el archivo.";
-            exit(); // Detener la ejecución del script si hay un error en la carga del archivo
+            exit();
         }
     } else {
         echo "Por favor, seleccione un archivo";
-        exit(); // Detener la ejecución del script si no se proporciona ningún archivo
+        exit();
     }
 
     // Realizar la inserción del Pokémon en la base de datos
@@ -62,7 +59,6 @@ if (mysqli_num_rows($resultado_verificar) > 0) {
     }
 }
 
-// Cerrar la conexión
 $conn->close();
 
 ?>

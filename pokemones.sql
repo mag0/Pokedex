@@ -38,9 +38,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `usuario`, `pass`) VALUES
-(1, 'admin', '12345');
-(2, 'Jose', 'poke');
-(1, 'Maria', 'pikachu12');
+(1, 'admin', '12345'),
+(2, 'Jose', 'poke'),
+(3, 'Maria', 'pikachu12');
 
 -- --------------------------------------------------------
 
@@ -222,11 +222,6 @@ INSERT INTO `pokemon` (`id`, `imagen`, `tipo`, `numero`, `descripcion`) VALUES
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `pokemon`
---
-ALTER TABLE `pokemon`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas

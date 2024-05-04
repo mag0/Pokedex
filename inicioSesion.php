@@ -29,15 +29,12 @@ function consultarBD($usuario, $pass)
     $password = "";
     $database = "pokemones";
 
-    // Crear conexión
     $conn = mysqli_connect($servername, $username, $password, $database);
 
-    // Verificar la conexión
     if (!$conn) {
         die("Error al conectar con la base de datos: " . mysqli_connect_error());
     }
 
-    // Realizar consulta
     $sql = "SELECT * FROM login WHERE usuario = '" . $usuario . "' && pass = '" . $pass . "'";
     $result = mysqli_query($conn, $sql);
 

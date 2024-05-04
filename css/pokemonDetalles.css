@@ -1,38 +1,3 @@
-.contenedor__form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2em;
-    background-color: #F8D027;
-    margin-bottom:4rem;
-}
-
-.logo{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.form{
-    display: none;
-}
-
-.form__input {
-    display: none;
-
-}
-
-.form__input-button {
-    display: none;
-}
-
-.pokedex-title {
-    font-size: 3em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
 .contenedor__porkemon {
     display: flex;
     margin-left: 60px;

@@ -16,7 +16,6 @@ if(isset($_FILES['imagen'])){
 
     $file_path = $folder . $file_name;
 
-    // Eliminar archivo existente si existe
     if (file_exists($file_path)) {
         unlink($file_path);
     }
@@ -35,15 +34,12 @@ $username = "root";
 $password = "";
 $database = "pokemones";
 
-// Crear conexión
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Verificar la conexión
 if (!$conn) {
     die("Error al conectar con la base de datos: " . mysqli_connect_error());
 }
 
-// Actualizar o insertar el Pokémon
 $sql = "UPDATE pokemon
             SET imagen = '$nombre',
                 tipo = '$tipo',
@@ -63,7 +59,7 @@ if (mysqli_query($conn, $sql)) {
 }
 header('location:/Pokedex/index.php?nombre=admin');
 exit();
-// Cerrar la conexión
+
 mysqli_close($conn);
 ?>
 

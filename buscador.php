@@ -12,10 +12,8 @@ function buscarPokemonAdmin()
     $password = "";
     $database = "pokemones";
 
-// Crear conexión
     $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Verificar la conexión
     if (!$conn) {
         die("Error al conectar con la base de datos: " . mysqli_connect_error());
     }
@@ -23,7 +21,6 @@ function buscarPokemonAdmin()
     if (isset($_POST['pokemonesBusqueda'])) {
         $pokemonesRequerido = $_POST['pokemonesBusqueda'];
 
-        // Realizar consulta
         $sql = "SELECT * FROM pokemon 
          WHERE imagen LIKE '%" . $pokemonesRequerido . "%'
          OR tipo LIKE '%" . $pokemonesRequerido . "%'
@@ -32,7 +29,6 @@ function buscarPokemonAdmin()
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
-            // Imprimir los datos de cada Pokémon
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>
                 <td data-label="Imagen"><img
@@ -69,10 +65,8 @@ function buscarPokemon()
     $password = "";
     $database = "pokemones";
 
-// Crear conexión
     $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Verificar la conexión
     if (!$conn) {
         die("Error al conectar con la base de datos: " . mysqli_connect_error());
     }

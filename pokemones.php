@@ -6,15 +6,12 @@ function obtenerPokemonesTotales()
     $password = "";
     $database = "pokemones";
 
-// Crear conexión
     $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Verificar la conexión
     if (!$conn) {
         die("Error al conectar con la base de datos: " . mysqli_connect_error());
     }
 
-// Consulta para contar la cantidad de Pokémon en la base de datos
     $sql = "SELECT COUNT(*) AS total_pokemones FROM pokemon";
     $result = mysqli_query($conn, $sql);
 
@@ -36,15 +33,12 @@ $username = "root";
 $password = "";
 $database = "pokemones";
 
-// Crear conexión
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Verificar la conexión
 if (!$conn) {
     die("Error al conectar con la base de datos: " . mysqli_connect_error());
 }
 
-// Realizar consulta
     $sql = "SELECT * FROM pokemon";
 
 $result = mysqli_query($conn, $sql);
@@ -52,7 +46,6 @@ $result = mysqli_query($conn, $sql);
 $cantidadPokemones= 0;
 
 if (mysqli_num_rows($result) > 0) {
-    // Imprimir los datos de cada Pokémon
     while($row = mysqli_fetch_assoc($result)) {
         if(isset($_GET['nombre'])){
             echo '<tr>
@@ -90,6 +83,5 @@ if (mysqli_num_rows($result) > 0) {
     echo 'no hay pokemones';
 }
 
-// Cerrar la conexión
 $conn->close();
 ?>

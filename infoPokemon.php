@@ -53,14 +53,34 @@ if (isset($_GET['nombre'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-    <link rel="stylesheet" href="./css/headerDetalles.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/pokemonDetalles.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/header.css">
 
 </head>
 
 <body>
-    <?php require_once("./header.php"); ?>
+    <?php if(isset($_GET['admin'])){
+        $nombre = $_GET['admin'];
+        echo '<header class="contenedor__form">
+        <div class="logo">
+            <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
+            <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
+        </div>
+        <div style="color: black; text-align: center">
+            <img src="imagenes/logo/user.png" alt="">
+            <h2>'.$nombre.'</h2>
+            <a href="/Pokedex/index.php" style="border: 1px solid black; padding: .1em; text-decoration: none; color: black">Cerrar Sesión</a>
+        </div>';
+        if ( isset($_GET['error']) &&$_GET['error']==1){
+            echo "<div style='background-color: aquamarine;color:red; padding: .2em; text-align: center' >Usuario y contraseña invalidos </div> ";
+        }
+        echo '</header>';
+
+    }else{
+        require_once ('./header.php');
+    }?>
     <main>
         <div class="contenedor">
             <img src="./imagenes/pokemones/<?= $numPoke ?>.png" alt="<?= $nombre ?>" class="contenedor-img">
@@ -107,7 +127,7 @@ if (isset($_GET['nombre'])) {
     .contenedorInfo-tipoImg {
         width: 100px;
         justify-content: center;
-        align-items: centers;
+        align-items: center;
     }
 
     .contenedorInfo-titulo {
