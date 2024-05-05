@@ -47,7 +47,7 @@ if(isset($_GET['id'])){
             </div>
             <div class="input-group">
                 <label for="tipo">Imagen (solo archivos PNG):</label>
-                <input type="file" id="imagen" name="imagen" accept="image/png" required>
+                <input type="file" id="imagen" name="imagen" accept="image/png">
             </div>
             <div class="input-group">
                 <label for="tipo">Tipo:</label>
@@ -86,7 +86,7 @@ if(isset($_GET['id'])){
             </div>
             <div class="input-group">
                 <label for="numero">Número:</label>
-                <input type="text" id="numero" name="numero" placeholder="160" required>
+                <input type="text" id="numero" name="numero" placeholder="Ejemplo: 160" required>
             </div>
             <div class="input-group">
                 <label for="descripcion">Descripcion:</label>

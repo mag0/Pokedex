@@ -62,7 +62,8 @@ if (isset($_GET['nombre'])) {
 
 <body>
     <?php if(isset($_GET['admin'])){
-        $nombre = $_GET['admin'];
+        $admin = $_GET['admin'];
+        $nombre = $_GET['nombre'];
         echo '<header class="contenedor__form">
         <div class="logo">
             <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
@@ -70,7 +71,7 @@ if (isset($_GET['nombre'])) {
         </div>
         <div style="color: black; text-align: center">
             <img src="imagenes/logo/user.png" alt="">
-            <h2>'.$nombre.'</h2>
+            <h2>'.$admin.'</h2>
             <a href="/Pokedex/index.php" style="border: 1px solid black; padding: .1em; text-decoration: none; color: black">Cerrar Sesión</a>
         </div>';
         if ( isset($_GET['error']) &&$_GET['error']==1){

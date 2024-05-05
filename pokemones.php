@@ -51,7 +51,7 @@ if (mysqli_num_rows($result) > 0) {
             echo '<tr>
                 <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'&admin=admin"><img class="img_p"
                         src="/Pokedex/imagenes/pokemones/'.$row["numero"].'.png?'.time().'"
-                        alt="Bulbasaur"></a></td>
+                        alt="'.$row["imagen"].'"></a></td>
                 <td data-label="Imagen"><img class="img_p"
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'_icono.png"
                             alt="Bulbasaur"><img
@@ -67,8 +67,8 @@ if (mysqli_num_rows($result) > 0) {
         }else{
             echo '<tr>
                 <td data-label="Imagen"><a href="/Pokedex/infoPokemon.php?nombre='.$row["imagen"].'"><img class="img_p"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.$row["numero"].'.png"
-                        alt="Bulbasaur"></a></td>
+                        src="/Pokedex/imagenes/pokemones/'.$row["numero"].'.png?'.time().'"
+                        alt="'.$row["imagen"].'"></a></td>
                 <td data-label="Imagen"><img class="img_p"
                             src="/Pokedex/imagenes/TipoPokemon/tipo_'. $row["tipo"].'_icono.png"
                             alt="Bulbasaur"><img
