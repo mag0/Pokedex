@@ -1,37 +1,29 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .contenedor__form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #807e7e;
+    padding: 2em;
+    background-color: #F8D027;
+    margin-bottom:2rem;
 }
 
-.logo {
+.logo{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img{
     width: 5em;
     height: 5em;
-
 }
 
-.logo__titulo{
-    display: flex;
-    width: 5em;
-    height: 5em;
-
-}
-.form {
+.form{
     display: flex;
     align-items: center;
 }
 
 .form__input {
-    margin-right: 5px;
     padding: 5px;
     border: 1px solid blue;
 
@@ -41,5 +33,42 @@
     padding: 5px 10px;
     background-color: #fced00;
     cursor: pointer;
+}
 
+.pokedex-title {
+    font-size: 3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+@media screen and (max-width: 1440px) {
+    .contenedor__form {
+        font-size: .9em;
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .contenedor__form {
+        font-size: .8em;
+    }
+    .pokedex-title {
+        font-size: 2em;
+    }
+    .logo img{
+        width: 4em;
+        height: 4em;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .contenedor__form {
+        font-size: .6em;
+        flex-direction: column;
+    }
+    .logo img{
+        width: 3em;
+        height: 3em;
+    }
 }
