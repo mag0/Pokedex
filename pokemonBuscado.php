@@ -1,57 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once('templates/header.php');?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="/Pokedex/css/style.css">
-    <link rel="stylesheet" href="/Pokedex/css/footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-</head>
+<?php require_once('templates/seccionBuscador.php');?>
 
-<body>
-<main>
 
-    <?php
-    if(isset($_GET['nombre'])){
-        $nombre = $_GET['nombre'];
-        echo '<header class="contenedor__form">
-        <div class="logo">
-            <img style="width: 5em; height: 5em" src="imagenes/logo/LogoPokeball.png" alt="logo">
-            <h1 style="margin-left: 2em" class="pokedex-title">Pokedex</h1>
-        </div>
-        <div style="color: black; text-align: center">
-            <img src="imagenes/logo/user.png" alt="">
-            <h2>'.$nombre.'</h2>
-            <a href="/Pokedex/index.php" style="border: 1px solid black; padding: .1em; text-decoration: none; color: black">Cerrar Sesión</a>
-        </div>';
-        if ( isset($_GET['error']) &&$_GET['error']==1){
-            echo "<div style='background-color: aquamarine;color:red; padding: .2em; text-align: center' >Usuario y contraseña invalidos </div> ";
-        }
-        echo '</header>';
-
-    }else{
-        require_once ('./header.php');
-    }
-
-    ?>
-
-    <section class="buscador">
-        <?php
-        if(isset($_GET['nombre'])){
-            echo '<form action="pokemonBuscado.php?nombre=Admin" method="POST">';
-        }else{
-            echo '<form action="pokemonBuscado.php" method="POST">';
-        }
-        ?>
-        <input type="text" class="pokemon" name="pokemonesBusqueda" placeholder="Ingrese el nombre, tipo o número de pokémon">
-        <input class="quienes" type="submit" value="Quien es este pokemon?">
-        </form>
-    </section>
-
-    <?php
+<?php
     if ( isset($_GET['error'])){
         switch ($_GET["error"]){
             case 1:
@@ -104,11 +56,5 @@
             </div>';
     }
     ?>
-</main>
+<?php require_once('templates/footer.php');?>
 
-<?php
-require_once ('./footer.php');
-?>
-</body>
-
-</html>

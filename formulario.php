@@ -104,7 +104,7 @@ if(isset($_GET['id'])){
 ?>
 
 <?php
-require_once ('./footer.php');
+require_once('./footer.php');
 ?>
 </body>
 

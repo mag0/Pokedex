@@ -1,0 +1,31 @@
+<!-- The Band Section -->
+<section class="tabla">
+    <table>
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Tipo</th>
+                <th>Número</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#pokemones}}
+            <tr>
+                <td data-label="Imagen">
+                    <a href="play.php?id={{idPokemon}}">
+                        <img class="img_p" src="{{imagen}}">
+                    </a>
+                </td>
+                <td data-label="play.php?id={{idPokemon}}">
+                    <a href="vistaInfoPokemon">
+                         <img class="img_p" src="{{imagen}}>
+                    </a>
+                </td>
+                <td data-label="Número">{{numero}}</td>
+                <td data-label="nombre">{{nombre}}</td>
+            </tr>
+        {{/pokemones}}
+        </tbody>
+    </table>
+</div>

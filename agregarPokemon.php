@@ -1,26 +1,17 @@
 <?php
+include_once("helper/Database.php");
 
+$config = parse_ini_file('config/config.ini');
 $nombre = $_POST["nombre"];
 $tipo = $_POST["tipo"];
 $numero = $_POST["numero"];
 $descripcion = $_POST["descripcion"];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "pokemones";
+$database = new Database($config['servername'], $config['username'], $config['password'], $config['dbname']);
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+$resultado_verificar = $database->queryPersonal("SELECT * FROM pokemon WHERE imagen = '$nombre' OR numero = '$numero'");
 
-if (!$conn) {
-    die("Error al conectar con la base de datos: " . mysqli_connect_error());
-}
-
-// Verificar si el Pokémon ya existe
-$sql_verificar = "SELECT * FROM pokemon WHERE imagen = '$nombre' OR numero = '$numero'";
-$resultado_verificar = mysqli_query($conn, $sql_verificar);
-
-if (mysqli_num_rows($resultado_verificar) > 0) {
+if ($resultado_verificar && $resultado_verificar->num_rows > 0) {
     echo "Error: Ya existe un Pokémon con el nombre '$nombre'.";
     header('Location: /Pokedex/formulario.php?nombre=Admin&error=5');
     exit();
@@ -47,18 +38,14 @@ if (mysqli_num_rows($resultado_verificar) > 0) {
         exit();
     }
 
-    // Realizar la inserción del Pokémon en la base de datos
     $sql_insertar = "INSERT INTO pokemon (imagen, tipo, numero, descripcion) VALUES ('$nombre', '$tipo', '$numero', '$descripcion')";
 
-    if (mysqli_query($conn, $sql_insertar)) {
+    if ($database->executePersonal($sql_insertar)) {
         echo "Pokémon creado exitosamente.";
         header('Location: /Pokedex/index.php?nombre=Admin');
         exit();
     } else {
-        echo "Error al crear el Pokémon: " . mysqli_error($conn);
+        echo "Error al crear el Pokémon: " . $database->getLastError();
     }
 }
-
-$conn->close();
-
 ?>
